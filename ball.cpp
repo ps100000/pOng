@@ -27,7 +27,9 @@ bool ball::update(){
 	if(temp.getLength() >= 190){
 		if((abs(angle - players[0].get_rot()) < 26.5651)){
 			vel.rotateBy(M_PI - 2 * (atan2(vel.y, vel.x) - atan2(temp.y, temp.x)));
-			vel *= 1.05;
+			if(vel.getLength() < 3 * 5){
+				vel *= 1.15;
+			}
 			temp.setLength(188);
 			pos = temp + vec2d(200,200);
 		}else{
@@ -39,7 +41,9 @@ bool ball::update(){
 		}
 		if((abs(angle - players[1].get_rot()) < 26.5651) && (pos.x < 200)){
 			vel.rotateBy(M_PI - 2 * (atan2(vel.y, vel.x) - atan2(temp.y, temp.x)));
-			vel *= 1.05;
+			if(vel.getLength() < 3 * 5){
+				vel *= 1.15;
+			}
 			temp.setLength(188);
 			pos = temp + vec2d(200,200);
 		}else{
